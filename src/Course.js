@@ -38,46 +38,40 @@ class ClassroomTag extends React.Component {
   }
 }
 
-class TimetypeTag extends React.Component {
-
-  render() {
-    if (this.props.timetype === "even") {
-      return <Tag color="#2db7f5">双周</Tag>
-    } else if (this.props.timetype === "odd") {
-      return <Tag color="#f50">单周</Tag>
-    } else {
-      return <></>;
-    }
-  }
-
-}
-
 class Course extends React.Component {
   render() {
     const ISEMPTY = (this.props.classname === "__DISABLED")? true: false;
+    let styles = {
+      width: "100%", 
+      height: "100%",
+    };
+    let backgroundcolor = "#fff";
+    if (this.props.timetype === "even") {
+      backgroundcolor = "#ddf";
+    } else if (this.props.timetype === "odd") {
+      backgroundcolor = "#fdd";
+    } else if (!ISEMPTY) {
+      backgroundcolor = "#dfd"
+    }
+    styles.background = backgroundcolor;
+
     return (
-      <div classclassname="disabled course">
-        <Tooltip placement="topLeft" title={ISEMPTY? "": this.props.classname} arrowPointAtCenter>
-          <Card 
-            style = {{ width: "100%", height: "100%" }}
-            size = {ISMOBILE? 'small': 'default'}
-            bodyStyle = {ISMOBILE? { padding: "4px" }: {}}
-            headStyle = {ISMOBILE? { color: "red" }: {}}
-          >
-            <Meta
-              title = {ISEMPTY? "　": this.props.classname}
-              description = {
-                ISEMPTY?
-                <div>　</div>:
-                <div>
-                  <ClassroomTag classroom={this.props.classroom}/>
-                  <TimetypeTag  timetype={this.props.timetype}/>
-                </div>
-              }
-            />
-          </Card>
-        </Tooltip>
-      </div>
+      <Tooltip placement="topLeft" title={ISEMPTY? "": this.props.classname + '： ' + this.props.classroom} arrowPointAtCenter>
+        <Card 
+          style = {styles}
+          size = {ISMOBILE? 'small': 'default'}
+          bodyStyle = {ISMOBILE? { padding: "4px" }: {}}
+        >
+          <Meta
+            title = {ISEMPTY? "　": this.props.classname}
+            description = {
+              ISEMPTY?
+              <div>　</div>:
+              <ClassroomTag classroom={this.props.classroom}/>
+            }
+          />
+        </Card>
+      </Tooltip>
     );
   }
 }

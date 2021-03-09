@@ -32,6 +32,20 @@ class ClassroomTag extends React.Component {
   }
 }
 
+class TimetypeTag extends React.Component {
+
+  render() {
+    if (this.props.timetype === "even") {
+      return <Tag color="#2db7f5">双周</Tag>
+    } else if (this.props.timetype === "odd") {
+      return <Tag color="#f50">单周</Tag>
+    } else {
+      return <></>;
+    }
+  }
+
+}
+
 class Course extends React.Component {
   render() {
     if (this.props.classname === "__DISABLED") {
@@ -47,7 +61,12 @@ class Course extends React.Component {
           <Card style={{  }}>
               <Meta
                 title = {this.props.classname}
-                description = {<ClassroomTag classroom={this.props.classroom}/>}
+                description = {
+                  <>
+                    <ClassroomTag classroom={this.props.classroom}/>
+                    <TimetypeTag  timetype={this.props.timetype}/>
+                  </>
+                }
               />
             </Card>
         </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Course from './Course.js'
 import { Row, Col } from 'antd';
+import coursedata from './courses.json'
 
 class Curriculum extends React.Component {
   constructor(props) {
@@ -20,8 +21,19 @@ class Curriculum extends React.Component {
       classes: Array(84).fill({
         classname: "__DISABLED",
         classroom: "",
+        timetype: "every",
       }),
     };
+
+    // 解析./courses.json
+    const courses = coursedata.courses;
+    for (let idx in courses) {
+      const course = courses[idx];
+      for (let tidx in course.times) {
+        let time = course.times[tidx];
+
+      }
+    }
   }
 
   // 获取日期
@@ -45,6 +57,7 @@ class Curriculum extends React.Component {
     return (<Course
       classname = {this.state.classes[idx].classname}
       classroom = {this.state.classes[idx].classroom}
+      timetype = {this.state.classes[idx].timetype}
     />);
   }
 
@@ -52,7 +65,7 @@ class Curriculum extends React.Component {
   render_row = (rowNum) => {
     let row = [];
     for (let j = 1; j <= this.state.dates; j++) {
-      row.push(<Col>{this.render_class(rowNum, j)}</Col>)
+      row.push(<Col key={rowNum.toString() + j.toString()}>{this.render_class(rowNum, j)}</Col>)
     }
     return row;
   }
@@ -62,7 +75,11 @@ class Curriculum extends React.Component {
     let curriculum = [];
     for (let i = 1; i <= this.state.totclasses; i++) {
       curriculum.push(
-        <Row type="flex" justify="center" align="middle">
+        <Row key={i} 
+          type="flex" 
+          justify="center" 
+          align="middle"
+        >
           {this.render_row(i)}
         </Row>
       )

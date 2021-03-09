@@ -1,6 +1,7 @@
 import React from 'react';
 import { Tag } from 'antd';
 import { Card } from 'antd';
+import { Tooltip } from 'antd';
 import isMobile from 'ismobilejs';
 const { Meta } = Card;
 
@@ -56,22 +57,26 @@ class Course extends React.Component {
     const ISEMPTY = (this.props.classname === "__DISABLED")? true: false;
     return (
       <div classclassname="disabled course">
-        <Card 
-          style = {{ width: "100%", height: "100%" }}
-          bodyStyle = {{ padding: "4px" }}
-        >
-          <Meta
-            title = {ISEMPTY? "　": this.props.classname}
-            description = {
-              ISEMPTY?
-              <div>　</div>:
-              <div>
-                <ClassroomTag classroom={this.props.classroom}/>
-                <TimetypeTag  timetype={this.props.timetype}/>
-              </div>
-            }
-          />
-        </Card>
+        <Tooltip placement="topLeft" title={ISEMPTY? "": this.props.classname} arrowPointAtCenter>
+          <Card 
+            style = {{ width: "100%", height: "100%" }}
+            size = {ISMOBILE? 'small': 'default'}
+            bodyStyle = {ISMOBILE? { padding: "4px" }: {}}
+            headStyle = {ISMOBILE? { color: "red" }: {}}
+          >
+            <Meta
+              title = {ISEMPTY? "　": this.props.classname}
+              description = {
+                ISEMPTY?
+                <div>　</div>:
+                <div>
+                  <ClassroomTag classroom={this.props.classroom}/>
+                  <TimetypeTag  timetype={this.props.timetype}/>
+                </div>
+              }
+            />
+          </Card>
+        </Tooltip>
       </div>
     );
   }

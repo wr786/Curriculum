@@ -37,14 +37,14 @@ class Course extends React.Component {
     if (this.props.classname === "__DISABLED") {
       return (
         <div classclassname="disabled course">
-          <Card style={{ width: 200, marginTop: 16 }}>
+          <Card style={{  }}>
           </Card>
         </div>
       );
     } else {
       return (
         <div classclassname="course">
-          <Card style={{ width: 200, marginTop: 16 }}>
+          <Card style={{  }}>
               <Meta
                 title = {this.props.classname}
                 description = {<ClassroomTag classroom={this.props.classroom}/>}

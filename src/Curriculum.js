@@ -51,7 +51,7 @@ class Curriculum extends React.Component {
   // 渲染一周的一行课程
   render_row = (rowNum) => {
     let row = [];
-    for (let j = 1; j <= this.state.totclasses; j++) {
+    for (let j = 1; j <= this.state.dates; j++) {
       row.push(<Col>{this.render_class(rowNum, j)}</Col>)
     }
     return row;
@@ -60,7 +60,7 @@ class Curriculum extends React.Component {
   render() {
     /* 一行有24格，那么每格就是3 */
     let curriculum = [];
-    for (let i = 1; i <= this.state.dates; i++) {
+    for (let i = 1; i <= this.state.totclasses; i++) {
       curriculum.push(
         <Row type="flex" justify="center" align="middle">
           {this.render_row(i)}

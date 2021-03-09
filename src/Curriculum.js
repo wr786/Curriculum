@@ -40,7 +40,7 @@ class Curriculum extends React.Component {
             classroom: course.place,
             timetype: time.type
           };
-          return;
+          return true;
         } )
       }
     }
@@ -107,7 +107,7 @@ class Curriculum extends React.Component {
       row.push(
         <Col 
           key={rowNum.toString() + j.toString()}
-          span={this.state.validDates == 7? 3: 4}
+          span={this.state.validDates === 7? 3: 4}
         >
           {this.render_class(j, rowNum)}
         </Col>)

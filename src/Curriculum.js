@@ -23,17 +23,31 @@ class Curriculum extends React.Component {
         classroom: "",
         timetype: "every",
       }),
+      validDates: 7
     };
 
     // 解析./courses.json
+    const state = this.state;
     const courses = coursedata.courses;
     for (let idx in courses) {
       const course = courses[idx];
       for (let tidx in course.times) {
         let time = course.times[tidx];
-
+        time.classes.map( (classtime) => {
+          let cidx = this.calc_idx(time.weekday, classtime);
+          state.classes[cidx] = {
+            classname: course.name,
+            classroom: course.place,
+            timetype: time.type
+          };
+          return;
+        } )
       }
     }
+    this.setState(state);
+
+    // 判断是否省略周六周日
+
   }
 
   // 获取日期
@@ -65,7 +79,13 @@ class Curriculum extends React.Component {
   render_row = (rowNum) => {
     let row = [];
     for (let j = 1; j <= this.state.dates; j++) {
-      row.push(<Col key={rowNum.toString() + j.toString()}>{this.render_class(rowNum, j)}</Col>)
+      row.push(
+        <Col 
+          key={rowNum.toString() + j.toString()}
+          span={3}
+        >
+          {this.render_class(j, rowNum)}
+        </Col>)
     }
     return row;
   }
@@ -75,8 +95,9 @@ class Curriculum extends React.Component {
     let curriculum = [];
     for (let i = 1; i <= this.state.totclasses; i++) {
       curriculum.push(
-        <Row key={i} 
-          type="flex" 
+        <Row 
+          key={i} 
+          // type="flex" 
           justify="center" 
           align="middle"
         >

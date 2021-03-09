@@ -1,19 +1,13 @@
 import './App.css';
-
-class Course extends React.Component {
-  render() {
-    return (
-      <>
-        
-      </>
-    )
-  }
-}
+import Course from './Course.js'
 
 function App() {
   return (
     <div className="App">
-      
+      <Course
+        name = "测试"
+        classroom = "理教404"
+      />
     </div>
   );
 }

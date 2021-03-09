@@ -51,7 +51,10 @@ class Course extends React.Component {
     if (this.props.classname === "__DISABLED") {
       return (
         <div classclassname="disabled course">
-          <Card style={{ width: "100%", height: "100%" }}>
+          <Card 
+            style = {{ width: "100%", height: "100%" }}
+            bodyStyle = {{ padding: "4px" }}
+          >
             <Meta
               title = {"　"}
               description = {
@@ -64,17 +67,20 @@ class Course extends React.Component {
     } else {
       return (
         <div classclassname="course">
-          <Card style={{ width: "100%", height: "100%" }}>
-              <Meta
-                title = {this.props.classname}
-                description = {
-                  <div>
-                    <ClassroomTag classroom={this.props.classroom}/>
-                    <TimetypeTag  timetype={this.props.timetype}/>
-                  </div>
-                }
-              />
-            </Card>
+          <Card 
+            style = {{ width: "100%", height: "100%" }}
+            bodyStyle = {{ padding: "4px" }}
+          >
+            <Meta
+              title = {this.props.classname}
+              description = {
+                <div>
+                  <ClassroomTag classroom={this.props.classroom}/>
+                  <TimetypeTag  timetype={this.props.timetype}/>
+                </div>
+              }
+            />
+          </Card>
         </div>
       )
     }

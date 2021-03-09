@@ -17,13 +17,13 @@ class Curriculum extends React.Component {
     */
     this.state = {
       dates: 7,
+      validDates: 7,
       totclasses: 12,
       classes: Array(84).fill({
         classname: "__DISABLED",
         classroom: "",
         timetype: "every",
       }),
-      validDates: 7
     };
 
     // 解析./courses.json
@@ -47,7 +47,32 @@ class Curriculum extends React.Component {
     this.setState(state);
 
     // 判断是否省略周六周日
+    // 先判断是否能省略周日
+    let omitSunday = this.has_no_class(7);
+    if (omitSunday) {
+      // 再判断能否省略周六
+      let omitSaturday = this.has_no_class(6);
+      if(omitSaturday) {
+        const state = this.state;
+        state.validDates = 5;
+        this.setState(state);
+      } else {
+        const state = this.state;
+        state.validDates = 6;
+        this.setState(state);
+      }
+    }
 
+  }
+
+  // 判断某天是否没课
+  has_no_class = (date) => {
+    for (let classtime = 1; classtime <= this.state.totclasses; classtime++) {
+      if (this.state.classes[this.calc_idx(date, classtime)].classname !== "__DISABLED") {
+        return false;
+      }
+    }
+    return true;
   }
 
   // 获取日期
@@ -78,11 +103,11 @@ class Curriculum extends React.Component {
   // 渲染一周的一行课程
   render_row = (rowNum) => {
     let row = [];
-    for (let j = 1; j <= this.state.dates; j++) {
+    for (let j = 1; j <= this.state.validDates; j++) {
       row.push(
         <Col 
           key={rowNum.toString() + j.toString()}
-          span={3}
+          span={this.state.validDates == 7? 3: 4}
         >
           {this.render_class(j, rowNum)}
         </Col>)

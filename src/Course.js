@@ -52,6 +52,12 @@ class Course extends React.Component {
       return (
         <div classclassname="disabled course">
           <Card style={{ width: "100%", height: "100%" }}>
+            <Meta
+              title = {"　"}
+              description = {
+                <div>　</div>
+              }
+            />
           </Card>
         </div>
       );

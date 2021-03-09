@@ -5,8 +5,12 @@ function App() {
   return (
     <div className="App">
       <Course
-        name = "测试"
+        classname = "测试"
         classroom = "理教404"
+      />
+      <Course 
+        classname = "__DISABLED"
+        classroom = ""
       />
     </div>
   );

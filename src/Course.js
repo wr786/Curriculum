@@ -7,17 +7,17 @@ class ClassroomTag extends React.Component {
 
   pick_color = (classroom) => {
     let color = "geekblue";   // The default color
-    if (classroom.indexOf("理教") != -1) {
+    if (classroom.indexOf("理教") !== -1) {
       color = "purple";
-    } else if (classroom.indexOf("二教") != -1) {
+    } else if (classroom.indexOf("二教") !== -1) {
       color = "orange";
-    } else if (classroom.indexOf("三教") != -1) {
+    } else if (classroom.indexOf("三教") !== -1) {
       color = "red";
-    } else if (classroom.indexOf("一教") != -1) {
+    } else if (classroom.indexOf("一教") !== -1) {
       color = "green";
-    } else if (classroom.indexOf("邱德拔") != -1) {
+    } else if (classroom.indexOf("邱德拔") !== -1) {
       color = "cyan";
-    } else if (classroom.indexOf("王克桢") != -1) {
+    } else if (classroom.indexOf("王克桢") !== -1) {
       color = "gold";
     }
     return color;
@@ -34,16 +34,25 @@ class ClassroomTag extends React.Component {
 
 class Course extends React.Component {
   render() {
-    return (
-      <div class="course">
-        <Card style={{ width: 200, marginTop: 16 }}>
-            <Meta
-              title = {this.props.name}
-              description = {<ClassroomTag classroom={this.props.classroom}/>}
-            />
+    if (this.props.classname === "__DISABLED") {
+      return (
+        <div classclassname="disabled course">
+          <Card style={{ width: 200, marginTop: 16 }}>
           </Card>
-      </div>
-    )
+        </div>
+      );
+    } else {
+      return (
+        <div classclassname="course">
+          <Card style={{ width: 200, marginTop: 16 }}>
+              <Meta
+                title = {this.props.classname}
+                description = {<ClassroomTag classroom={this.props.classroom}/>}
+              />
+            </Card>
+        </div>
+      )
+    }
   }
 }
 

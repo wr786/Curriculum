@@ -1,7 +1,12 @@
 import React from 'react';
 import { Tag } from 'antd';
 import { Card } from 'antd';
+import isMobile from 'ismobilejs';
 const { Meta } = Card;
+
+// 针对移动端优化
+const DEVICE = isMobile(window.navigator);
+const ISMOBILE = DEVICE.any;
 
 class ClassroomTag extends React.Component {
 
@@ -48,42 +53,27 @@ class TimetypeTag extends React.Component {
 
 class Course extends React.Component {
   render() {
-    if (this.props.classname === "__DISABLED") {
-      return (
-        <div classclassname="disabled course">
-          <Card 
-            style = {{ width: "100%", height: "100%" }}
-            bodyStyle = {{ padding: "4px" }}
-          >
-            <Meta
-              title = {"　"}
-              description = {
-                <div>　</div>
-              }
-            />
-          </Card>
-        </div>
-      );
-    } else {
-      return (
-        <div classclassname="course">
-          <Card 
-            style = {{ width: "100%", height: "100%" }}
-            bodyStyle = {{ padding: "4px" }}
-          >
-            <Meta
-              title = {this.props.classname}
-              description = {
-                <div>
-                  <ClassroomTag classroom={this.props.classroom}/>
-                  <TimetypeTag  timetype={this.props.timetype}/>
-                </div>
-              }
-            />
-          </Card>
-        </div>
-      )
-    }
+    const ISEMPTY = (this.props.classname === "__DISABLED")? true: false;
+    return (
+      <div classclassname="disabled course">
+        <Card 
+          style = {{ width: "100%", height: "100%" }}
+          bodyStyle = {{ padding: "4px" }}
+        >
+          <Meta
+            title = {ISEMPTY? "　": this.props.classname}
+            description = {
+              ISEMPTY?
+              <div>　</div>:
+              <div>
+                <ClassroomTag classroom={this.props.classroom}/>
+                <TimetypeTag  timetype={this.props.timetype}/>
+              </div>
+            }
+          />
+        </Card>
+      </div>
+    );
   }
 }
 

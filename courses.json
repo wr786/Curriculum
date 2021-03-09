@@ -1,0 +1,156 @@
+{
+    "courses": [
+        {
+            "name": "自动控制原理",
+            "times": [
+                {
+                    "type": "every",
+                    "weekday": 5,
+                    "classes": [1, 2]
+                },
+                {
+                    "type": "even",
+                    "weekday": 3,
+                    "classes": [1, 2]
+                }
+            ],
+            "place": "二教505"
+        },
+        {
+            "name": "高等动力学",
+            "times": [
+                {
+                    "type": "every",
+                    "weekday": 1,
+                    "classes": [1, 2]
+                },
+                {
+                    "type": "odd",
+                    "weekday": 3,
+                    "classes": [7, 8]
+                }
+            ],
+            "place": "三教501"
+        },
+        {
+            "name": "大学化学",
+            "times": [
+                {
+                    "type": "every",
+                    "weekday": 2,
+                    "classes": [10, 11]
+                }
+            ],
+            "place": "理教201"
+        },
+        {
+            "name": "普通化学（B）",
+            "times": [
+                {
+                    "type": "every",
+                    "weekday": 2,
+                    "classes": [7, 8]
+                },
+                {
+                    "type": "every",
+                    "weekday": 4,
+                    "classes": [3, 4]
+                }
+            ],
+            "place": "理教201"
+        },
+        {
+            "name": "地板球",
+            "times": [
+                {
+                    "type": "every",
+                    "weekday": 3,
+                    "classes": [3, 4]
+                }
+            ],
+            "place": "邱德拔B2"
+        },
+        {
+            "name": "毛泽东思想和中国特色社会主义理论体系概论",
+            "times": [
+                {
+                    "type": "every",
+                    "weekday": 4,
+                    "classes": [10, 11, 12]
+                }
+            ],
+            "place": "理教102"
+        },
+        {
+            "name": "机器人学实验（一）",
+            "times": [
+                {
+                    "type": "every",
+                    "weekday": 2,
+                    "classes": [5, 6]
+                }
+            ],
+            "place": "王克桢楼902"
+        },
+        {
+            "name": "计算机图形学",
+            "times": [
+                {
+                    "type": "every",
+                    "weekday": 1,
+                    "classes": [10, 11, 12]
+                }
+            ],
+            "place": "理教408"
+        },
+        {
+            "name": "算法设计与分析（研讨型小班）",
+            "times": [
+                {
+                    "type": "every",
+                    "weekday": 5,
+                    "classes": [5, 6]
+                }
+            ],
+            "place": "理教318"
+        },
+        {
+            "name": "算法设计与分析",
+            "times": [
+                {
+                    "type": "every",
+                    "weekday": 1,
+                    "classes": [3, 4]
+                },
+                {
+                    "type": "every",
+                    "weekday": 3,
+                    "classes": [5, 6]
+                }
+            ],
+            "place": "二教109"
+        },
+        {
+            "name": "人工智能引论",
+            "times": [
+                {
+                    "type": "every",
+                    "weekday": 1,
+                    "classes": [5, 6]
+                }
+            ],
+            "place": "理教208"
+        },
+        {
+            "name": "人工智能引论实践课",
+            "times": [
+                {
+                    "type": "every",
+                    "weekday": 4,
+                    "classes": [7, 8]
+                }
+            ],
+            "place": "三教406"
+        }
+    ]
+}

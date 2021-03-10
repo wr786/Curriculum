@@ -58,7 +58,7 @@ class Course extends React.Component {
 
     let titleStyle = {fontWeight: "bold"};
     if (ISMOBILE) {
-      titleStyle.fontSize = "0.8px";
+      titleStyle.fontSize = "0.4em";
     }
 
     return (

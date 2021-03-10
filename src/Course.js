@@ -33,7 +33,7 @@ class ClassroomTag extends React.Component {
     // Select the color of classroom
     let color = this.pick_color(this.props.classroom);
     return (
-      <Tag color={color}>{this.props.classroom}</Tag>
+      <Tag color={color} >{this.props.classroom}</Tag>
     )
   }
 }
@@ -41,6 +41,7 @@ class ClassroomTag extends React.Component {
 class Course extends React.Component {
   render() {
     const ISEMPTY = (this.props.classname === "__DISABLED")? true: false;
+
     let styles = {
       width: "100%", 
       height: "100%",
@@ -55,6 +56,11 @@ class Course extends React.Component {
     }
     styles.background = backgroundcolor;
 
+    let titleStyle = {fontWeight: "bold"};
+    if (ISMOBILE) {
+      titleStyle.fontSize = "0.8px";
+    }
+
     return (
       <Tooltip placement="topLeft" title={ISEMPTY? "": this.props.classname + '： ' + this.props.classroom} arrowPointAtCenter>
         <Card 
@@ -63,7 +69,7 @@ class Course extends React.Component {
           bodyStyle = {ISMOBILE? { padding: "4px" }: {}}
         >
           <Meta
-            title = {ISEMPTY? "　": this.props.classname}
+            title = {ISEMPTY? "　": <div style={titleStyle}>{this.props.classname}</div>}
             description = {
               ISEMPTY?
               <div>　</div>:

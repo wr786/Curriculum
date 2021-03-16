@@ -62,7 +62,7 @@ class Course extends React.Component {
     }
 
     return (
-      <Tooltip placement="topLeft" title={ISEMPTY? "": this.props.classname + '： ' + this.props.classroom} arrowPointAtCenter>
+      <Tooltip placement="topLeft" title={ISEMPTY? "": this.props.classname + ' | ' + this.props.classroom} arrowPointAtCenter>
         <Card 
           style = {styles}
           size = {ISMOBILE? 'small': 'default'}

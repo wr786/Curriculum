@@ -1,19 +1,5 @@
 {
-    "courses": [{
-            "name": "自动控制原理",
-            "times": [{
-                    "type": "every",
-                    "weekday": 5,
-                    "classes": [1, 2]
-                },
-                {
-                    "type": "even",
-                    "weekday": 3,
-                    "classes": [1, 2]
-                }
-            ],
-            "place": "二教505"
-        },
+    "courses": [
         {
             "name": "高等动力学",
             "times": [{
